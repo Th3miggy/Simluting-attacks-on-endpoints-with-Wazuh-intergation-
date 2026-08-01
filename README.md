@@ -41,4 +41,40 @@ Ref 3: Now for the next part we are going to slide over to our Kali machine (att
     
 ![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-05-52.png?raw=true)
 
+Ref 4: Now that we have found the open port we can try to preform a brute force attack against the target using Hydra
+
+        $ sudo hydra -l badguy -P /usr/share/wordlists/wfuzz/other/common.pass.txt ssh://192.168.1.126
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-06-08.png?raw=true)
+
+Ref 5: Great! we can see above that the attack failed to find a password that worked but that's OK the point of the lab is to visualize the attack in Wazuh manager and now below we can see the number of failed login attempted that Wazuh recorded and we can also see that it was able to identify it has a brute force attack instead of just several failed login attempted.
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-09-01.png?raw=true)
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-09-25.png?raw=true)
+
+Ref 6: Alright lets try another one. for the next attack we are going to do a SQl injection attack but first we need to return to our victim machine and install Apache2. make sure it allow though enabled firewall and making sure Apache is running
+
+        S sudo apt update 
+        $ sudo apt install apache2
+
+        S sudo ufw app list
+        $ sudo ufw allow 'apache'
+        $ sudo ufw status
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-18-21.png?raw=true)
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-21-32.png?raw=true)
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-22-14.png?raw=true)
+
+Ref 7: Once we are good to go there make sure to confirm your apache2 is up and running which you can do by using the curl command or just by type your IP address in a browser
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2021-11-50.png?raw=true)
+
+Ref 8: Now that it is up. we need to edit /var/ossec/etc/ossec.conf file so that we can monitor the access log of our Apache server from Wazuh manager
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-32-32.png?raw=true)
+
+
 

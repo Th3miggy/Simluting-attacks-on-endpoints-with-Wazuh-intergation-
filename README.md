@@ -76,5 +76,19 @@ Ref 8: Now that it is up. we need to edit /var/ossec/etc/ossec.conf file so that
 
 ![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2020-32-32.png?raw=true)
 
+Ref 9: Lets try our SQL attack and Once again we can see that attack of was not successful but once again Wazuh detected the attack and type of attack 
 
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2021-15-35.png?raw=true)
+
+Ref 10: for our final attack lets try one that is super similar but different attack and see if Wazuh can detected attack. Using the command below we can launch the attack against our victim machine and of course it was unsuccessful but we can see that Wazuh once again detected the attack and determine the type of attack as a shell shock attack. 
+
+        $ sudo curl -H "User-Agent: () { :; }; /bin/cat /etc/passwd" 192.168.1.126
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2021-27-39.png?raw=true)
+
+![not-working](https://github.com/Th3miggy/Simluting-attacks-on-endpoints-with-Wazuh-intergation-/blob/main/Screenshot%20from%202026-07-29%2021-27-09.png?raw=true)
+
+## Conclusion
+
+This is only a few of proof of concept guide that Wazuh has available that being said it is definitely some of the more fun ones to do as well as being some of the best for seeing how Wazuh identify and intercept different attack and turns them in to events to view.
 
